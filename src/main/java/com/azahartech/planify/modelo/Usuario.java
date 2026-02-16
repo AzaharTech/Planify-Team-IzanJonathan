@@ -32,4 +32,9 @@ public class Usuario {
         Usuario usuario = (Usuario) object;
         return Objects.equals(nombre, usuario.nombre) && Objects.equals(rol, usuario.rol);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, rol);
+    }
 }

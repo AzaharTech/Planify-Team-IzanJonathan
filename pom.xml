@@ -7,7 +7,11 @@
     <groupId>org.example</groupId>
     <artifactId>Planify-Team-IzanJonathan</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+    </properties>
     <dependencies>
         <!-- Dependencia para pruebas unitarias (JUnit 5) -->
         <dependency>
@@ -26,16 +30,15 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.6.0</version>
+            </plugin>
            <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.23.0</version> <!-- or use version from pluginManagement -->
-        <configuration>
-            <!-- failOnViolation is actually true by default, but can be disabled -->
-            <failOnViolation>true</failOnViolation>
-            <!-- printFailingErrors is pretty useful -->
-            <printFailingErrors>true</printFailingErrors>
-        </configuration>
         <executions>
           <execution>
             <goals>
@@ -46,10 +49,6 @@
       </plugin>
         </plugins>
     </build>
-    <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
 </project>
