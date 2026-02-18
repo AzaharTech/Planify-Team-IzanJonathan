@@ -1,9 +1,12 @@
 package com.azahartech.planify.servicio;
 
+import com.azahartech.planify.modelo.Prioridad;
 import com.azahartech.planify.modelo.Tarea;
+import com.azahartech.planify.modelo.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GestorTareas {
     private List<Tarea> listaDeTareas;
@@ -60,6 +63,13 @@ public void listarTareas() {
  }
           // Si el bucle termina, la tarea no fue encontrada
  System.out.println("-> Error: No se encontró ninguna tarea con el ID " + id + ".");
+ }
+ public List<Tarea> listarPorUsuario(Usuario u){
+    return listaDeTareas.stream().filter(tarea -> tarea.getResponsable().equals(u)).collect(Collectors.toList());
+ }
+
+ public List<Tarea> listarPorPrioridad(Prioridad p){
+        return listaDeTareas.stream().filter(tarea -> tarea.getPrioridad().equals(p)).collect(Collectors.toList());
  }
 
 }
