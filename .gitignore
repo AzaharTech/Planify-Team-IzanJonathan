@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Adiciones para probar el CI ###
+/target
+.idea
