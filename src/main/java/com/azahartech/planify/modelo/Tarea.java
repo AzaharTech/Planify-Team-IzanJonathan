@@ -5,8 +5,12 @@ public class Tarea {
     private int id;
     private String descripcion;
     private boolean completada;
+    private Usuario responsable;
+    private Prioridad prioridad;
+    private Categoria categoria;
 
-    public Tarea(String descripcion) {
+
+    public Tarea(String descripcion, Usuario responsable, Prioridad prioridad, Categoria categoria) {
         this.id = contadorIds++;
         this.descripcion = descripcion;
         this.completada = false; // Por defecto, una nueva tarea no está completada
@@ -15,9 +19,7 @@ public class Tarea {
         this.categoria = categoria;
     }
 
-    private Usuario responsable;
-    private Prioridad prioridad;
-    private Categoria categoria;
+
 
     public int getId() {
         return id;
