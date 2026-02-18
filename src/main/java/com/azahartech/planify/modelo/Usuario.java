@@ -1,7 +1,7 @@
 package com.azahartech.planify.modelo;
 
 import java.util.Objects;
-//Clase Usuario
+// Usuario
 public class Usuario {
     String nombre;
     String rol;
