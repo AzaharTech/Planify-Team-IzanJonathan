@@ -2,7 +2,9 @@ package com.azahartech.planify.presentacion;
 
 import com.azahartech.planify.modelo.Categoria;
 import com.azahartech.planify.modelo.Prioridad;
+import com.azahartech.planify.modelo.Usuario;
 import com.azahartech.planify.servicio.GestorTareas;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,10 +20,13 @@ public class Main {
 
         while (!salir) {
             System.out.println("\nMENU PRINCIPAL:");
-            System.out.println("  1. Añadir nueva tarea");
-            System.out.println("  2. Listar todas las tareas");
-            System.out.println("  3. Marcar tarea como completada");
-            System.out.println("  4. Salir");
+            System.out.println("  1. Crear nuevo Usuario");
+            System.out.println("  2. Añadir nueva tarea");
+            System.out.println("  3. Listar todas las tareas");
+            System.out.println("  4. Listar todas las tareas de un usuario");
+            System.out.println("  5. Listar todas las tareas con una prioridad especifica");
+            System.out.println("  6. Marcar tarea como completada");
+            System.out.println("  7. Salir");
             System.out.print("Selecciona una opción: ");
 
             try {
@@ -30,19 +35,43 @@ public class Main {
 
                 switch (opcion) {
                     case 1:
+                        System.out.println("Escribe el nombre del Usuario: ");
+                        String nombreU = scanner.nextLine();
+                        System.out.println("Escribe el rol del Usuario: ");
+                        String rolU = scanner.nextLine();
+                        Usuario usuario1 = new Usuario(nombreU, rolU);
+                        gestor.registrarUsuario(usuario1);
+                    case 2:
                         System.out.print("Escribe la descripción de la nueva tarea: ");
                         String descripcion = scanner.nextLine();
                         gestor.anadirTarea(descripcion, "Pau", Prioridad.ALTA, Categoria.FEATURE);
                         break;
-                    case 2:
+                    case 3:
                         gestor.listarTareas();
                         break;
-                    case 3:
+                    case 4:
+                        System.out.print("Introduce el nombre del usuario: ");
+                        String nombreUsuario = scanner.nextLine();
+                        if (nombreUsuario != null) {
+                            gestor.listarPorUsuario(gestor.buscarUsuario(nombreUsuario));
+                        } else {
+                            System.out.println("Usuario no encontrado");
+                        }
+                        break;
+                    case 5:
+                        System.out.print("Introduce la prioridad de la tarea: ");
+                        String prioridadPrueba = scanner.nextLine();
+                        if (prioridadPrueba != null) {
+                            gestor.listarPorPrioridad(gestor.buscarPrioridad(prioridadPrueba));
+                        }
+                        break;
+                    case 6:
                         System.out.print("Introduce el ID de la tarea a marcar como completada: ");
                         int id = scanner.nextInt();
+                        scanner.nextLine();
                         gestor.marcarTareaComoCompletada(id);
                         break;
-                    case 4:
+                    case 7:
                         salir = true;
                         System.out.println("¡Gracias por usar Planify! ¡Hasta la próxima!");
                         break;

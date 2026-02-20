@@ -57,6 +57,8 @@ public class Tarea {
         return categoria;
     }
 
+    public String prioridadToString(){return getPrioridad().toString();}
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
