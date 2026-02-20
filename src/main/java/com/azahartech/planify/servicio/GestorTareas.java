@@ -4,6 +4,7 @@ import com.azahartech.planify.modelo.Prioridad;
 import com.azahartech.planify.modelo.Categoria; // Requisito MVP v2
 import com.azahartech.planify.modelo.Tarea;
 import com.azahartech.planify.modelo.Usuario;
+import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +77,10 @@ public class GestorTareas {
         System.out.println("------------------");
     }
 
+    public List<Usuario> listarUsuario(){
+        return listaDeUsuarios;
+    }
+
     /**
      * * Busca una tarea por su ID y la marca como completada.
      * * @param id El número de la tarea a marcar.
@@ -103,5 +108,22 @@ public class GestorTareas {
 
     public List<Tarea> listarPorPrioridad(Prioridad p) {
         return listaDeTareas.stream().filter(tarea -> tarea.getPrioridad().equals(p)).collect(Collectors.toList());
+    }
+    public Prioridad buscarPrioridad(String u){
+        for(Tarea t : listaDeTareas){
+            if(t.prioridadToString().equals(u)){
+                return t.getPrioridad();
+            }
+        }
+        return null;
+    }
+
+    public Usuario buscarUsuario(String u) {
+        for (Usuario a : listaDeUsuarios) {
+            if (a.getNombre().equals(u)) {
+                return a;
+            }
+        }
+        return null;
     }
 }
