@@ -4,7 +4,6 @@ import com.azahartech.planify.modelo.Prioridad;
 import com.azahartech.planify.modelo.Categoria; // Requisito MVP v2
 import com.azahartech.planify.modelo.Tarea;
 import com.azahartech.planify.modelo.Usuario;
-import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
 import java.util.List;
