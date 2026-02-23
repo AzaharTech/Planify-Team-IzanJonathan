@@ -41,10 +41,13 @@ public class Main {
                         String rolU = scanner.nextLine();
                         Usuario usuario1 = new Usuario(nombreU, rolU);
                         gestor.registrarUsuario(usuario1);
+                        break;
                     case 2:
                         System.out.print("Escribe la descripción de la nueva tarea: ");
                         String descripcion = scanner.nextLine();
-                        gestor.anadirTarea(descripcion, "Pau", Prioridad.ALTA, Categoria.FEATURE);
+                        System.out.println("Escribe el nombre del Usuario: ");
+                        String nombreUs = scanner.nextLine();
+                        gestor.anadirTarea(descripcion, nombreUs, Prioridad.BAJA, Categoria.FEATURE);
                         break;
                     case 3:
                         gestor.listarTareas();
@@ -53,7 +56,7 @@ public class Main {
                         System.out.print("Introduce el nombre del usuario: ");
                         String nombreUsuario = scanner.nextLine();
                         if (nombreUsuario != null) {
-                            gestor.listarPorUsuario(gestor.buscarUsuario(nombreUsuario));
+                            System.out.println(gestor.listarPorUsuario(gestor.buscarUsuario(nombreUsuario)));
                         } else {
                             System.out.println("Usuario no encontrado");
                         }
@@ -62,7 +65,7 @@ public class Main {
                         System.out.print("Introduce la prioridad de la tarea: ");
                         String prioridadPrueba = scanner.nextLine();
                         if (prioridadPrueba != null) {
-                            gestor.listarPorPrioridad(gestor.buscarPrioridad(prioridadPrueba));
+                            System.out.println(gestor.listarPorPrioridad(gestor.buscarPrioridad(prioridadPrueba)));
                         }
                         break;
                     case 6:
